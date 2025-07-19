@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <UApp>
     <UContainer>
       <nav class="py-4">
         <UButton
@@ -20,7 +20,7 @@
         <NuxtPage />
       </main>
     </UContainer>
-  </div>
+  </UApp>
 </template>
 
 <script setup lang="ts">
