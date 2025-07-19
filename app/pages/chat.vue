@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Ollama } from 'ollama'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
+import { marked } from 'marked'
 
 const ollama = new Ollama({ host: 'http://localhost:11434' })
 const message = ref('')
@@ -27,6 +28,18 @@ async function fetchModels() {
 
 onMounted(() => {
   fetchModels()
+})
+
+// Configure marked options for better security and styling
+marked.setOptions({
+  breaks: true, // Convert \n to <br>
+  gfm: true, // Enable GitHub Flavored Markdown
+})
+
+// Computed property to parse markdown response
+const parsedResponse = computed(() => {
+  if (!response.value) return ''
+  return marked(response.value)
 })
 
 async function generateResponse() {
@@ -87,9 +100,7 @@ async function generateResponse() {
       </UCard>
 
       <UCard v-if="response" class="mt-4">
-        <div class="prose">
-          {{ response }}
-        </div>
+        <div class="prose max-w-none" v-html="parsedResponse"></div>
       </UCard>
     </div>
   </div>
