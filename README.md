@@ -2,7 +2,7 @@
 
 A vibes-driven engineering project that embraces the flow of intuitive coding. This Nuxt.js application is crafted with 100% positive vibes and just the right amount of human guidance. It features Ollama integration for AI chat capabilities, because sometimes the best code comes from good conversations.
 
-> "Code with vibes, debug with peace" - VibesPodEng Philosophy
+> "Code with vibes, debug with peace" - VibEsPodeng Philosophy
 
 ## Prerequisites
 
