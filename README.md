@@ -8,9 +8,13 @@ A vibes-driven engineering project that embraces the flow of intuitive coding. T
 
 1. Node.js and npm
 2. [Ollama](https://ollama.ai) installed on your machine
-3. Gemma 3B model installed in Ollama. Install it by running:
+3. At least one language model installed in Ollama (e.g., Gemma, Llama, Phi, etc.). You can install models by running:
    ```bash
-   ollama pull gemma3:1b
+   # Example models - choose any that fits your needs
+   ollama pull gemma2:2b      # Lightweight and fast
+   ollama pull llama3.2:3b    # Good balance of speed and capability
+   ollama pull phi3:mini      # Microsoft's efficient model
+   ollama pull qwen2.5:1.5b   # Compact multilingual model
    ```
 4. Ollama service running locally on port 11434
 
@@ -30,9 +34,17 @@ A vibes-driven engineering project that embraces the flow of intuitive coding. T
    - Home page: http://localhost:3000
    - Chat page: http://localhost:3000/chat
 
+## Using the Chat Interface 💬
+
+1. Navigate to the chat page at http://localhost:3000/chat
+2. Select your preferred model from the dropdown (all your installed Ollama models will be available)
+3. Type your message and hit "Send Message"
+4. Enjoy the conversation with markdown-formatted responses!
+
 ## Vibes Features ✨
 
-- Chill chat interface powered by Gemma 3B model
+- Dynamic model selection - choose your AI companion from available Ollama models
+- Chill chat interface with markdown support for rich, formatted responses
 - Smooth streaming responses that flow like good conversation
 - Zen-like UI components built with Nuxt UI
 - TypeScript support for those structured vibes
@@ -54,6 +66,7 @@ This project embraces:
 - Nuxt UI Library: Beautiful components that spark joy
 - TypeScript: Because even good vibes need strong types
 - Ollama.js: AI integration that feels natural and flows right
+- Marked.js: Markdown parsing for beautifully formatted AI responses
 
 ## Production
 

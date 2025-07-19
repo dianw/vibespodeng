@@ -8,12 +8,6 @@
         >
           Chat with Ollama
         </UButton>
-        <UButton
-          to="/testing"
-          icon="i-heroicons-beaker"
-        >
-          Testing
-        </UButton>
       </nav>
       
       <main>
