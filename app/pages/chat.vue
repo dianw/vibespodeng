@@ -2,6 +2,7 @@
 import { Ollama } from 'ollama'
 import { ref, onMounted, computed } from 'vue'
 import { marked } from 'marked'
+import DOMPurify from 'dompurify'
 
 const ollama = new Ollama({ host: 'http://localhost:11434' })
 const message = ref('')
@@ -36,10 +37,11 @@ marked.setOptions({
   gfm: true, // Enable GitHub Flavored Markdown
 })
 
-// Computed property to parse markdown response
+// Computed property to parse markdown response with sanitization
 const parsedResponse = computed(() => {
   if (!response.value) return ''
-  return marked(response.value)
+  const rawHtml = marked(response.value) as string
+  return DOMPurify.sanitize(rawHtml)
 })
 
 async function generateResponse() {
@@ -92,15 +94,16 @@ async function generateResponse() {
         <UButton
           :loading="loading"
           :disabled="!message || loading"
-          @click="generateResponse"
           class="mt-2"
+          @click="generateResponse"
         >
           Send Message
         </UButton>
       </UCard>
 
       <UCard v-if="response" class="mt-4">
-        <div class="prose max-w-none" v-html="parsedResponse"></div>
+        <!-- Safe to use v-html here: content is sanitized with DOMPurify -->
+        <div class="prose max-w-none" v-html="parsedResponse"/>
       </UCard>
     </div>
   </div>
